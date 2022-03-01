@@ -84,9 +84,18 @@ const Register = () => {
           required
           aria-invalid={validName ? "false" : "true"}
           aria-describedby="uidnote"
+          // if user is on input it will be focused
           onFocus={() => setUserFocus(true)}
+          //if user is not in the input box it will be blurred
           onBlur={() => setUserFocus(false)}
         />
+        {/* line says if userinput is in focus and if the the user has began typing or if the name they input is not valid */}
+        <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+          <FontAwesomeIcon icon={faInfoCircle} />
+          4 to 24 characters.<br />
+          Must begin with a letter.<br />
+          Letters, numbers, underscores, hyphens allowed.
+      </p>
       </form>
     </section>
 

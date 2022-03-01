@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Register from './components/Register';
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <main className="App">
+      <Register />
+    </main>
   );
 }
 

@@ -1,8 +1,7 @@
-import Register from './components/Register';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 function App() {
   return (
     <main className="App">
-      <Register />
     </main>
   );
 }

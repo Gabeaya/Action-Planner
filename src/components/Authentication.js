@@ -2,7 +2,10 @@ import React from 'react'
 
 function Authentication() {
   return (
-    <div>Authentication</div>
+    <div className="loginPage">
+      <p> Sign in with Google</p>
+      <button className='login-with-google-btn'>Sign In</button>
+    </div>
   )
 }
 

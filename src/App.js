@@ -25,14 +25,18 @@ function App() {
     <Router>
       <nav>
         <Link to="/"> Home</Link>
-        <Link to="/createquest"> Begin a Quest</Link>
-        {!isAuth ? <Link to="/authentication"> Login </Link> : <button onClick={signUserOut}> Log Out</button>}
-
-
+        {!isAuth ? (
+          <Link to="/authentication"> Login </Link> 
+        ) : (
+          <>
+          <Link to="/createquest"> Begin a Quest</Link>
+          <button onClick={signUserOut}> Log Out</button>
+          </>
+        )}
       </nav>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/createquest" element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
+        <Route path="/createquest" isAuth={isAuth} element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
         <Route path="/authentication" element={<Authentication setIsAuth={setIsAuth}/>}/>
       </Routes>
     </Router>

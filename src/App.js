@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import Home from './components/Home';
 import CreatePost from './components/CreatePost';
 import Authentication from './components/Authentication';
+import { useState } from "react";
 
 function App() {
 

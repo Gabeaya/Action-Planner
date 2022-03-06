@@ -5,7 +5,7 @@ import {addDoc, collection} from "firebase/firestore";
 import { db, auth } from '../firebase';
 import { useNavigate} from "react-router-dom";
 
-function CreateQuest({missionValues, setMissionValues}) {
+function CreateQuest({isAuth, missionValues, setMissionValues}) {
   const [questTitle, setQuestTitle] = useState("");
   const [questOrigin, setQuestOrigin] = useState("");
   const [selectedDate, setSelectedDate ] = useState(null)
@@ -45,6 +45,7 @@ function CreateQuest({missionValues, setMissionValues}) {
     navigate("/");
   };
 
+  
   return (
     <form>
       <div className='createPostPage'>

@@ -5,7 +5,7 @@ import {addDoc, collection} from "firebase/firestore";
 import { db, auth } from '../firebase';
 import { useNavigate} from "react-router-dom";
 
-function CreateQuest({isAuth, missionValues, setMissionValues}) {
+function CreateQuest({ missionValues, setMissionValues}) {
   const [questTitle, setQuestTitle] = useState("");
   const [questOrigin, setQuestOrigin] = useState("");
   const [selectedDate, setSelectedDate ] = useState(null)

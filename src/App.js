@@ -3,17 +3,29 @@ import Home from './components/Home';
 import CreatePost from './components/CreatePost';
 import Authentication from './components/Authentication';
 import { useState } from "react";
+import {signOut} from 'firebase/auth';
+import {useNavigate} from 'react-router-dom';
 
 function App() {
-
+  
+  let navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
+
+  const signUserOut = () => {
+    signOut(auth).then(() => {
+      localStorage.clear()
+      setIsAuth(false)
+      navigate("/")
+    })
+  };
 
   return (  
     <Router>
       <nav>
         <Link to="/"> Home</Link>
         <Link to="/createpost"> Create Post</Link>
-        <Link to="/authentication"> Login </Link>
+        {!isAuth ? <Link to="/authentication"> Login </Link> : <button> Log Out</button>}
+
 
       </nav>
       <Routes>

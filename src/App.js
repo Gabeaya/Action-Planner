@@ -35,8 +35,8 @@ function App() {
         )}
       </nav>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/createquest" isAuth={isAuth} element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
+        <Route path="/" element={<Home isAuth={isAuth} />}/>
+        <Route path="/createquest"  element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
         <Route path="/authentication" element={<Authentication setIsAuth={setIsAuth}/>}/>
       </Routes>
     </Router>

@@ -4,18 +4,18 @@ import CreatePost from './components/CreatePost';
 import Authentication from './components/Authentication';
 import { useState } from "react";
 import {signOut} from 'firebase/auth';
-import {useNavigate} from 'react-router-dom';
+
+import {auth} from './firebase';
 
 function App() {
   
-  let navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
 
   const signUserOut = () => {
     signOut(auth).then(() => {
       localStorage.clear()
       setIsAuth(false)
-      navigate("/")
+      window.location.pathname = "/authentication";
     })
   };
 
@@ -24,7 +24,7 @@ function App() {
       <nav>
         <Link to="/"> Home</Link>
         <Link to="/createpost"> Create Post</Link>
-        {!isAuth ? <Link to="/authentication"> Login </Link> : <button> Log Out</button>}
+        {!isAuth ? <Link to="/authentication"> Login </Link> : <button onClick={signUserOut}> Log Out</button>}
 
 
       </nav>

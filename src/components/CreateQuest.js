@@ -1,26 +1,31 @@
 import React from 'react'
 
 function CreateQuest({missionValues, setMissionValues}) {
-  const handleChange = (i, e) => {
+  const handleChange = (e, index) => {
+    const {name, value} = e.target
     const newMissionValues = [...missionValues];
-    newMissionValues[i][e.target.mission] = e.target.value;
-    setMissionValues(newMissionValues);
+    newMissionValues[index][name] = value;
+    setMissionValues(newMissionValues)
+  };
+
+
+  const addFormFields = () => {
+    setMissionValues([...missionValues, {mission: ""}])
   }
 
-const addFormFields = () => {
-  setMissionValues([...missionValues, {mission: ""}])
-}
+  const removeFormFields = (i) => {
+    const newMissionValues = [...missionValues];
+    newMissionValues.splice(i, 1);
+    setMissionValues(newMissionValues)
+  }
 
-const removeFormFields = (i) => {
-  const newMissionValues = [...missionValues];
-  newMissionValues.splice(i, 1);
-  setMissionValues(newMissionValues)
-}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(JSON.stringify(missionValues));
+  }
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-  alert(JSON.stringify(missionValues));
-}
+  console.log(missionValues);
+  
   return (
     <form onSubmit={handleSubmit}>
       <div className='createPostPage'>
@@ -38,7 +43,7 @@ const handleSubmit = (event) => {
             {missionValues.map((element, index) => (
               <div className='form-inline' key={index}>
                 <label>Mission</label>
-                <input type='text' name='form' value={element.mission || ""} onChange={e => handleChange(index, e)} />
+                <input type='text' name='mission' value={element.mission} onChange={(e) => handleChange(e, index)} />
                 {
                   index ?
                   <button type='button' className='button remove' onClick={() => removeFormFields(index)}>Remove</button>

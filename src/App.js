@@ -4,8 +4,9 @@ import CreateQuest from './components/CreateQuest';
 import Authentication from './components/Authentication';
 import { useState } from "react";
 import {signOut} from 'firebase/auth';
-
 import {auth} from './firebase';
+
+
 
 function App() {
   const [missionValues, setMissionValues] = useState([{ mission:""}]);

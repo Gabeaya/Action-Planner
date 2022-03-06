@@ -8,7 +8,7 @@ import {signOut} from 'firebase/auth';
 import {auth} from './firebase';
 
 function App() {
-  const [missionValues, setMissionValues] = useState([{mission:''}]);
+  const [missionValues, setMissionValues] = useState([{ mission:""}]);
 
   const [isAuth, setIsAuth] = useState(false);
 
@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/createquest" element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
-        <Route path="/authentication" element={<Authentication setForm={setIsAuth}/>}/>
+        <Route path="/authentication" element={<Authentication setIsAuth={setIsAuth}/>}/>
       </Routes>
     </Router>
   );

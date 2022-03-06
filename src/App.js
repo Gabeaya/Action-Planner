@@ -8,7 +8,8 @@ import {signOut} from 'firebase/auth';
 import {auth} from './firebase';
 
 function App() {
-  
+  const [missionValues, setMissionValues] = useState([{mission:''}]);
+
   const [isAuth, setIsAuth] = useState(false);
 
   const signUserOut = () => {
@@ -30,8 +31,8 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/createquest" element={<CreateQuest />}/>
-        <Route path="/authentication" element={<Authentication setIsAuth={setIsAuth}/>}/>
+        <Route path="/createquest" element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
+        <Route path="/authentication" element={<Authentication setForm={setIsAuth}/>}/>
       </Routes>
     </Router>
   );

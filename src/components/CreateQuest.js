@@ -1,7 +1,10 @@
 import React, { useState} from 'react';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'
-import {addDoc} from "firebase/firestore"
+import 'react-datepicker/dist/react-datepicker.css';
+import {addDoc, collection} from "firebase/firestore";
+import { db, auth } from '../firebase';
+import { useNavigate} from "react-router-dom";
+
 function CreateQuest({missionValues, setMissionValues}) {
   const [questTitle, setQuestTitle] = useState("");
   const [questOrigin, setQuestOrigin] = useState("");
@@ -24,16 +27,26 @@ function CreateQuest({missionValues, setMissionValues}) {
     setMissionValues(newMissionValues)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(JSON.stringify(missionValues));
-  }
-
   console.log(missionValues);
+  
+  const questsCollectionRef = collection(db, "quests")
+  let navigate = useNavigate();
+  
+  const createQuest = async (e) => {
+    e.preventDefault();
 
-  const createQuest = async () =>
+    await addDoc(questsCollectionRef, {
+      questTitle, 
+      questOrigin, 
+      selectedDate, 
+      missionValues, 
+      author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}
+    });
+    navigate("/");
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <div className='createPostPage'>
         <div className='cpContainer'>
           <h1> Begin a Quest </h1>
@@ -62,9 +75,7 @@ function CreateQuest({missionValues, setMissionValues}) {
             
               <DatePicker 
                 selected={selectedDate}
-                onChange={
-                  date => setSelectedDate(date)
-                }
+                onChange={date => setSelectedDate(date)}
                 minDate={new Date()}
                 isClearable
                 showYearDropdown
@@ -91,7 +102,7 @@ function CreateQuest({missionValues, setMissionValues}) {
               <button className="button add" type="button" onClick={() => addFormFields()}>Add Mission</button>
 
               <br/>
-              <button className="button submit" type="submit">Begin Quest!</button>
+              <button onClick={createQuest} className="button submit" type="submit">Begin Quest!</button>
           </div>
           </div>
         </div>

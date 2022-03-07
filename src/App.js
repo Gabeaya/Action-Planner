@@ -11,7 +11,7 @@ import {auth} from './firebase';
 function App() {
   const [missionValues, setMissionValues] = useState([{ mission:""}]);
 
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   const signUserOut = () => {
     signOut(auth).then(() => {

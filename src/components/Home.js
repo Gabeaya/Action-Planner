@@ -5,11 +5,17 @@ function Home({isAuth}) {
   const [questLists, setQuestLists] = useState([]);
   const questsCollectionRef = collection(db, "quests");
   
+  const display = async() => {
+    const data = await getDocs(questsCollectionRef)
+    setQuestLists(data.docs.map((doc) => ({...doc.data(), id:doc.id})))
+    display();
+  }
+
   const deleteQuest = async (id) => {
     const questDoc = doc(db, "quests", id)
     await deleteDoc(questDoc)
-
   };
+
   useEffect(()=> {
     const getQuests = async () => {
       const data = await getDocs(questsCollectionRef)
@@ -36,6 +42,7 @@ function Home({isAuth}) {
                   <button 
                     onClick={() => {
                       deleteQuest(quest.id);
+                      display();
                     }}
                   >
                     X

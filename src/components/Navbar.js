@@ -5,13 +5,16 @@ import {auth} from '../firebase';
 import {
   NavbarContainer,
   LeftContainer,
+  RightContainer,
   NavbarExtendedContainer,
   NavbarInnerContainer,
   NavbarLinkContainer,
   NavbarLink,
+  Logo,
   OpenLinksButton,
   NavbarLinkExtended,
 } from "../styles/Navbar.styles";
+import logo from '../assets/wolf.png';
 
 function Navbar({isAuth, setIsAuth}) {
   const signUserOut = () => {
@@ -45,6 +48,9 @@ function Navbar({isAuth, setIsAuth}) {
             </OpenLinksButton>
           </NavbarLinkContainer>
         </LeftContainer>
+        <RightContainer>
+          <Logo src={logo}></Logo>
+        </RightContainer>
       </NavbarInnerContainer>
       {extendNavbar && (
         <NavbarExtendedContainer>

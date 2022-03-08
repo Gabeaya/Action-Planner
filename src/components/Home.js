@@ -31,12 +31,17 @@ function Home({isAuth}) {
 
     <div className="homepage">
       {questLists.map((quest) => {
+
         return (
           <div className="quest"> 
             <div className="header"> 
               <div className='title'> 
                 <h1>{quest.questTitle}</h1>
               </div>
+              <div className='questTextContainer'>
+                {quest.questOrigin}
+              </div>
+
               <div className='deletePost'>
                 {isAuth && quest.author.id === auth.currentUser.uid && (
                   <button 
@@ -50,10 +55,10 @@ function Home({isAuth}) {
                 )}
               </div>
             </div>
-              <div className='questTextContainer'>{quest.questOrigin}</div>
+            
           </div>
         );
-      })}
+      })} 
     </div>
   );
 }

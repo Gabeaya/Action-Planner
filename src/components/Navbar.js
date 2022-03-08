@@ -1,18 +1,26 @@
 import React, { useState } from "react";
+import {signOut} from 'firebase/auth';
+import {auth} from '../firebase';
+
 import {
   NavbarContainer,
   LeftContainer,
-  RightContainer,
   NavbarExtendedContainer,
   NavbarInnerContainer,
   NavbarLinkContainer,
   NavbarLink,
-  Logo,
   OpenLinksButton,
   NavbarLinkExtended,
-} from "../styles/Navbar.style";
+} from "../styles/Navbar.styles";
 
-function Navbar() {
+function Navbar({isAuth, setIsAuth}) {
+  const signUserOut = () => {
+    signOut(auth).then(() => {
+      localStorage.clear()
+      setIsAuth(false)
+      window.location.pathname = "/authentication";
+    })
+  };
   const [extendNavbar, setExtendNavbar] = useState(false);
   return (
     <NavbarContainer extendNavbar={extendNavbar}>

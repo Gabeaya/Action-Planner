@@ -17,12 +17,31 @@ const style = {
   p: 4,
 };
 
-function Home({isAuth}) {
+function Home({isAuth, missionValues, setMissionValues}) {
   const [open, setOpen] = useState(false);
-  
+  const [questTitle, setQuestTitle] = useState("");
   const [questLists, setQuestLists] = useState([]);
   const questsCollectionRef = collection(db, "quests");
-  
+  const [questOrigin, setQuestOrigin] = useState("");
+  const [selectedDate, setSelectedDate ] = useState(null);
+
+  //Add these functions(27-41) to the app js and pass it as a prop when all is said and done
+  const addFormFields = () => {
+    setMissionValues([...missionValues, {mission: ""}])
+  }
+  const removeFormFields = (i) => {
+    const newMissionValues = [...missionValues];
+    newMissionValues.splice(i, 1);
+    setMissionValues(newMissionValues)
+  }
+
+  const handleChange = (e, index) => {
+    const {name, value} = e.target
+    const newMissionValues = [...missionValues];
+    newMissionValues[index][name] = value;
+    setMissionValues(newMissionValues)
+  };
+
   const display = async() => {
     const data = await getDocs(questsCollectionRef)
     setQuestLists(data.docs.map((doc) => ({...doc.data(), id:doc.id})))
@@ -46,7 +65,7 @@ function Home({isAuth}) {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  console.log()
   return (
       <div className="homepage">
       
@@ -77,9 +96,9 @@ function Home({isAuth}) {
                   )}
                 </div>
               </div>
-              <div className='updatePost'>
+              <div className='postDetails'>
                 {isAuth && quest.author.id === auth.currentUser.uid && (
-                  <><Button onClick={handleOpen}>Edit</Button><Modal
+                  <><Button onClick={handleOpen}>Details...</Button><Modal
                     open={open}
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
@@ -87,11 +106,57 @@ function Home({isAuth}) {
                   >
                     <Box sx={style}>
                       <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
+                        <div className='inputGp'> 
+                          <label> Quest Name:</label>
+                          <br/>
+                          <input 
+                            placeholder={quest.questTitle} 
+                            onChange={(event) => {
+                              setQuestTitle(event.target.value);
+                            }}
+                          />
+                        </div>
+                        <div className="inputGp">
+                          <label> Quest Origin: </label>
+                          <br />
+                          <textarea 
+                            placeholder={quest.questOrigin}
+                            onChange={(event) => {
+                              setQuestOrigin(event.target.value);
+                            }}
+                          />
+                        </div>
+                        <div className='datePicker'>
+                          <label>Quest Deadline</label>
+                          <br/>
+                          <input
+                            placeholder={quest.selectedDate}
+                            disabled
+                          />
+                          
+                        </div>
+                        
+                        <div className='inputGp'>
+                          {missionValues.map((element, index) => (
+                            <div className='form-inline' key={index}>
+                              <label>Mission</label>
+                              <br />
+                              <input type='text' name='mission' value={element.mission} onChange={(e) => handleChange(e, index)} />
+                              {
+                                index ?
+                                <button type='button' className='button remove' onClick={() => removeFormFields(index)}>Remove</button>
+                                : null 
+                              }
+                            </div>
+                          ))}
+                          <br/>
+                          <div className="button-section">
+                            <button className="button add" type="button" onClick={() => addFormFields()}>Add Mission</button>
+                          </div>
+                        </div>
+                        <Button onClick={e => setOpen(false)}>Update</Button>
                       </Typography>
-                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                      </Typography>
+                      
                     </Box>
                   </Modal></>
                 )}

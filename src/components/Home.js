@@ -31,9 +31,11 @@ function Home({isAuth}) {
   return (
 
     <div className="homepage">
+      
       {questLists.map((quest) => {
 
         return (
+          
           <div className="quest"> 
             <div className="header"> 
               <div className='title'> 

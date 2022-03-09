@@ -60,7 +60,7 @@ function Navbar({isAuth, setIsAuth}) {
         ) : (
           <>
             <NavbarLinkExtended to="/createquest"> Begin a Quest</NavbarLinkExtended>
-            <NavbarLink to="/logout"> Logout</NavbarLink>
+            <NavbarLinkExtended to="/logout"> Logout</NavbarLinkExtended>
           </>
         )}
       </NavbarExtendedContainer>

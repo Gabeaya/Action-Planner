@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Modal } from '@material-ui/core';
 import {getDocs, collection, deleteDoc, doc} from 'firebase/firestore';
 import {auth, db} from '../firebase';
+
 function Home({isAuth}) {
+  const [open, setOpen] = useState(false);
   
   const [questLists, setQuestLists] = useState([]);
   const questsCollectionRef = collection(db, "quests");
@@ -17,6 +20,10 @@ function Home({isAuth}) {
     await deleteDoc(questDoc)
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   useEffect(()=> {
     const getQuests = async () => {
       const data = await getDocs(questsCollectionRef)
@@ -26,44 +33,56 @@ function Home({isAuth}) {
     getQuests();
   },[])
 
-  
+    
 
   return (
-
-    <div className="homepage">
+    <>
+      <Modal
+        open={open}
+        onClose={e => setOpen(false)}
+      >
+        <div>
+          <h1>I am a modal</h1>
+          <button onClick={e => setOpen(false)}></button>
+        </div>
+      </Modal>
+      <div className="homepage">
       
-      {questLists.map((quest) => {
+        {questLists.map((quest) => {
 
-        return (
-          
-          <div className="quest"> 
-            <div className="header"> 
-              <div className='title'> 
-                <h1>"{quest.questTitle}"</h1>
-              </div>
-              <div className='questTextContainer'>
-                <h2>Whats the story: {quest.questOrigin}</h2>
-                <p>Deadline: {quest.selectedDate}</p>
-              </div>
-
-              <div className='deletePost'>
-                {isAuth && quest.author.id === auth.currentUser.uid && (
-                  <button 
-                    onClick={() => {
-                      deleteQuest(quest.id);
-                      display();
-                    }}
-                  >
-                    X
-                  </button>
-                )}
-              </div>
-            </div>
+          return (
             
-          </div>
-        );
-      })} 
-    </div>
+            <div className="quest"> 
+              <div className="header"> 
+                <div className='title'> 
+                  <h1>"{quest.questTitle}"</h1>
+                </div>
+                <div className='questTextContainer'>
+                  <h2>Whats the story: {quest.questOrigin}</h2>
+                  <p>Deadline: {quest.selectedDate}</p>
+                </div>
+
+                <div className='deletePost'>
+                  {isAuth && quest.author.id === auth.currentUser.uid && (
+                    <button 
+                      onClick={() => {
+                        deleteQuest(quest.id);
+                        display();
+                      }}
+                    >
+                      X
+                    </button>
+                  )}
+                </div>
+                <button onClick={e => setOpen(true)}>edit</button>
+              </div>
+              
+            </div>
+          );
+        })} 
+      </div>
+    </>
+    
   );
 }
 

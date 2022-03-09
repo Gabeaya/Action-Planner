@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {getDocs, collection, deleteDoc, doc} from 'firebase/firestore';
 import {auth, db} from '../firebase';
 function Home({isAuth}) {
+  
   const [questLists, setQuestLists] = useState([]);
   const questsCollectionRef = collection(db, "quests");
   
@@ -36,10 +37,11 @@ function Home({isAuth}) {
           <div className="quest"> 
             <div className="header"> 
               <div className='title'> 
-                <h1>{quest.questTitle}</h1>
+                <h1>"{quest.questTitle}"</h1>
               </div>
               <div className='questTextContainer'>
-                {quest.questOrigin}
+                <h2>Whats the story: {quest.questOrigin}</h2>
+                <p>Deadline: {quest.selectedDate}</p>
               </div>
 
               <div className='deletePost'>

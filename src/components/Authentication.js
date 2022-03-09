@@ -16,7 +16,7 @@ function Authentication({setIsAuth}) {
     <>
       <div className='landingPage'>
         <h1>Welcome to the Battle Within</h1>
-        <p>There is an old Native American tale explaining this: Within us there are two wolves, one that feeds on our good habits and the other feeds on the bad habits. The one you feed the most is the one you become. This app is intended to track/manifest better habits while also breaking them down into smaller steps.</p>
+        <p>Within all of us there resides a battle between two wolves. The good one feeds on our joy, peace, love, hope, serenity, generosity, empathy, kindness, and truth. They envigorate the good wolf. Then there is the evil on that feasts on the bad habits. Our anger, envy, jealousy, sorrow, regret, greed, arrogance, self-pity, guilt, resentment, inferiority, lies, false pride, and ego empower him. The wolf that wins that battle is the one you feed. This app is intended to track/manifest better habits so that you may become good and powerful. Take you goals create attainable steps that coincide with deadlines so that you may put a timeline on your dreams.</p>
       </div>
       <div className="loginPage">
         <p> Sign in with Google to Begin</p>

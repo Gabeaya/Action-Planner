@@ -1,6 +1,4 @@
 import React, { useState} from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import {addDoc, collection} from "firebase/firestore";
 import { db, auth } from '../firebase';
 import { useNavigate} from "react-router-dom";
@@ -73,15 +71,12 @@ function CreateQuest({ missionValues, setMissionValues}) {
           </div>
           <div className='datePicker'>
             <label>Quest Deadline</label>
-            
-              <DatePicker 
-                selected={selectedDate}
-                onChange={date => setSelectedDate(date)}
-                minDate={new Date()}
-                isClearable
-                showYearDropdown
-                scrollableMonthYearDropdown
-              />
+            <input
+              type="date"
+              onChange={(event) => {
+                setSelectedDate(event.target.value)
+              }}
+            />
             
           </div>
           

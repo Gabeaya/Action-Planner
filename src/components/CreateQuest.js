@@ -6,7 +6,7 @@ import { useNavigate} from "react-router-dom";
 function CreateQuest({ missionValues, setMissionValues}) {
   const [questTitle, setQuestTitle] = useState("");
   const [questOrigin, setQuestOrigin] = useState("");
-  const [selectedDate, setSelectedDate ] = useState(null)
+  const [selectedDate, setSelectedDate ] = useState(null);
 
   const handleChange = (e, index) => {
     const {name, value} = e.target
@@ -99,7 +99,7 @@ function CreateQuest({ missionValues, setMissionValues}) {
 
               <br/>
               <button onClick={createQuest} className="button submit" type="submit">Begin Quest!</button>
-          </div>
+            </div>
           </div>
         </div>
       </div>

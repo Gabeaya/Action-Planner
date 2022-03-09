@@ -20,7 +20,7 @@ function App() {
     <Router>
       <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
       <Routes>
-        <Route path="/" element={<Home isAuth={isAuth}/>}/>
+        <Route path="/" element={<Home isAuth={isAuth} missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
         <Route path="/createquest"  element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
         <Route path="/authentication" element={<Authentication setIsAuth={setIsAuth}/>}/>
         <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}/>

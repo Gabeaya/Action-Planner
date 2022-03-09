@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import {signOut} from 'firebase/auth';
-import {auth} from '../firebase';
+
 
 import {
   NavbarContainer,
@@ -17,13 +16,13 @@ import {
 import logo from '../assets/wolf.png';
 
 function Navbar({isAuth, setIsAuth}) {
-  const signUserOut = () => {
-    signOut(auth).then(() => {
-      localStorage.clear()
-      setIsAuth(false)
-      window.location.pathname = "/authentication";
-    })
-  };
+  // const signUserOut = () => {
+  //   signOut(auth).then(() => {
+  //     localStorage.clear()
+  //     setIsAuth(false)
+  //     window.location.pathname = "/authentication";
+  //   })
+  // };
   const [extendNavbar, setExtendNavbar] = useState(false);
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
@@ -32,11 +31,12 @@ function Navbar({isAuth, setIsAuth}) {
           <NavbarLinkContainer>
             <NavbarLink to="/"> Home</NavbarLink>
             {!isAuth ? (
-              <NavbarLink to="/authentication"> Login </NavbarLink> 
+              <NavbarLink to="/authentication"> Get Started </NavbarLink> 
             ) : (
               <>
                 <NavbarLink to="/createquest"> Begin a Quest</NavbarLink>
-                <button onClick={signUserOut}> Log Out</button>
+                <NavbarLink to="/logout"> Logout</NavbarLink>
+                {/* <button onClick={signUserOut}> Log Out</button> */}
             </>
             )}
             <OpenLinksButton
@@ -56,11 +56,11 @@ function Navbar({isAuth, setIsAuth}) {
         <NavbarExtendedContainer>
         <NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
         {!isAuth ? (
-          <NavbarLinkExtended to="/authentication"> Login </NavbarLinkExtended> 
+          <NavbarLinkExtended to="/authentication"> Get Started </NavbarLinkExtended> 
         ) : (
           <>
             <NavbarLinkExtended to="/createquest"> Begin a Quest</NavbarLinkExtended>
-            <button onClick={signUserOut}> Log Out</button>
+            <NavbarLink to="/logout"> Logout</NavbarLink>
           </>
         )}
       </NavbarExtendedContainer>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {getDocs, collection, deleteDoc, doc} from 'firebase/firestore';
+import {getDocs, collection, setDoc, deleteDoc, doc} from 'firebase/firestore';
 import {auth, db} from '../firebase';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useNavigate } from 'react-router-dom';
+import './App.css';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -62,6 +64,22 @@ function Home({isAuth, missionValues, setMissionValues}) {
     getQuests();
     
   },[])
+
+  let navigate = useNavigate();
+
+  const updateQuest = async (e) => {
+    e.preventDefault();
+    setOpen(false);
+    await setDoc(doc(db, "quests"), {
+      questTitle, 
+      questOrigin, 
+      selectedDate, 
+      missionValues, 
+      author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}
+    }, { merge: true});
+    navigate("/");
+    
+  };
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -154,7 +172,7 @@ function Home({isAuth, missionValues, setMissionValues}) {
                             <button className="button add" type="button" onClick={() => addFormFields()}>Add Mission</button>
                           </div>
                         </div>
-                        <Button onClick={e => setOpen(false)}>Update</Button>
+                        <Button onClick={updateQuest}>Update</Button>
                       </Typography>
                       
                     </Box>

@@ -4,7 +4,7 @@ import Home from './components/Home';
 import CreateQuest from './components/CreateQuest';
 import Authentication from './components/Authentication';
 import Logout from './components/Logout';
-import { useState } from "react";
+import React, { useState } from "react";
 
 // import {signOut} from 'firebase/auth';
 // import {auth} from './firebase';
@@ -17,15 +17,22 @@ function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (  
-    <Router>
-      <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
-      <Routes>
-        <Route path="/" element={<Home isAuth={isAuth} missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
-        <Route path="/createquest"  element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
-        <Route path="/authentication" element={<Authentication setIsAuth={setIsAuth}/>}/>
-        <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}/>
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
+        <Routes>
+          <Route path="/" element={<Home isAuth={isAuth} missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
+          <Route path="/createquest"  element={<CreateQuest missionValues={missionValues} setMissionValues={setMissionValues}/>}/>
+          <Route path="/authentication" element={<Authentication setIsAuth={setIsAuth}/>}/>
+          <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}/>
+        </Routes>
+      </Router>
+    </>
+    
+
+      
+
+    
   );
 }
 

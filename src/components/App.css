@@ -1,12 +1,7 @@
-  body {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: max-content;
-    min-width: max-content;
-    background-image: url('../assets/cover.jpg');
-  }
-    
+.app{
+  background-image: url("../assets/cover.jpg");
+  background-size: cover;
+}
 .quest {
   display: flex;
   margin: auto;
@@ -19,7 +14,21 @@
   border-radius: 12px;
   border: 1px solid rgba(209, 213, 219, 0.3);
 }
+.box {
+  margin: auto;
+  margin-top: 10%;
+  text-align: center;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 10px;
+  color: black;
+  width: 250px;
+  backdrop-filter: blur(4px) saturate(156%);
+  -webkit-backdrop-filter: blur(4px) saturate(156%);
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
 
+}
 
 .form{
   width: 350px;
@@ -89,9 +98,15 @@ footer{
   padding: .25em;
   left: 0;
   bottom: 0;
-  background-color: rgb(249, 163, 126);
+  background-color: #757575;
   columns: aliceblue;
   display: grid;
   place-content: center;
   position: fixed;
 }
+
+/* post=quest */
+/* header = postHeader */
+/* title=title */
+/* deletePost=deletePost */
+/* postTextcontainer=questTextContainer */

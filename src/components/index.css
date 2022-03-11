@@ -5,12 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('../assets/cover.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: max-content;
-  min-width: max-content;
+  
 }
 .container{
   display: box;
@@ -23,14 +18,3 @@ code {
     monospace;
 }
 
-footer{
-  width: 100%;
-  padding: .25em;
-  left: 0;
-  bottom: 0;
-  background-color: rgb(249, 163, 126);
-  columns: aliceblue;
-  display: grid;
-  place-content: center;
-  position: fixed;
-}

@@ -8,18 +8,7 @@ import Modal from '@mui/material/Modal';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
-import './index.css';
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+
 
 function Home({isAuth, missionValues, setMissionValues}) {
   const [open, setOpen] = useState(false);
@@ -86,103 +75,101 @@ function Home({isAuth, missionValues, setMissionValues}) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   console.log()
+
   return (
       <div className="homepage">
-      
         {questLists.map((quest) => {
-
           return (
-            <div className='container'>
-              <div className="quest"> 
-                <div className="header"> 
-                  <div className='title'> 
-                    <h1>"{quest.questTitle}"</h1>
-                  </div>
-                  <div className='questTextContainer'>
-                    <h2>Whats the story: {quest.questOrigin}</h2>
-                    <p>Deadline: {quest.selectedDate}</p>
-                  </div>
-
-                  <div className='deletePost'>
-                    {isAuth && quest.author.id === auth.currentUser.uid && (
-                      <button 
-                        onClick={() => {
-                          deleteQuest(quest.id);
-                          display();
-                        }}
-                      >
-                        X
-                      </button>
-                    )}
-                  </div>
+            <div className="quest"> 
+              <div className="header"> 
+                <div className='title'> 
+                  <h1>"{quest.questTitle}"</h1>
                 </div>
-                <div className='postDetails'>
+                <div className='deletePost'>
                   {isAuth && quest.author.id === auth.currentUser.uid && (
-                    <><Button onClick={handleOpen}>Details...</Button><Modal
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
+                    <button 
+                      onClick={() => {
+                        deleteQuest(quest.id);
+                        display();
+                      }}
                     >
-                      <Box sx={style}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                          <div className='inputGp'> 
-                            <label> Quest Name:</label>
-                            <br/>
-                            <input 
-                              placeholder={quest.questTitle} 
-                              onChange={(event) => {
-                                setQuestTitle(event.target.value);
-                              }}
-                            />
-                          </div>
-                          <div className="inputGp">
-                            <label> Quest Origin: </label>
-                            <br />
-                            <textarea 
-                              placeholder={quest.questOrigin}
-                              onChange={(event) => {
-                                setQuestOrigin(event.target.value);
-                              }}
-                            />
-                          </div>
-                          <div className='datePicker'>
-                            <label>Quest Deadline</label>
-                            <br/>
-                            <input
-                              placeholder={quest.selectedDate}
-                              disabled
-                            />
-                            
-                          </div>
-                          
-                          <div className='inputGp'>
-                            {missionValues.map((element, index) => (
-                              <div className='form-inline' key={index}>
-                                <label>Mission</label>
-                                <br />
-                                <input type='text' name='mission' value={element.mission} onChange={(e) => handleChange(e, index)} />
-                                {
-                                  index ?
-                                  <button type='button' className='button remove' onClick={() => removeFormFields(index)}>Remove</button>
-                                  : null 
-                                }
-                              </div>
-                            ))}
-                            <br/>
-                            <div className="button-section">
-                              <button className="button add" type="button" onClick={() => addFormFields()}>Add Mission</button>
-                            </div>
-                          </div>
-                          <Button onClick={updateQuest}>Update</Button>
-                        </Typography>
-                        
-                      </Box>
-                    </Modal></>
+                      X
+                    </button>
                   )}
-                  
                 </div>
               </div>
+              <div className='questTextContainer'>
+                  <h2>Whats the story: {quest.questOrigin}</h2>
+                  <p>Deadline: {quest.selectedDate}</p>
+                  <h3>@{quest.author.name}</h3>
+                  <div className='postDetails'>
+                    {isAuth && quest.author.id === auth.currentUser.uid && (
+                      <><Button onClick={handleOpen}>Details...</Button><Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box className="box">
+                          <Typography id="modal-modal-title" variant="h6" component="h2">
+                            <div className='inputGp'> 
+                              <label> Quest Name:</label>
+                              <br/>
+                              <input 
+                                placeholder={quest.questTitle} 
+                                onChange={(event) => {
+                                  setQuestTitle(event.target.value);
+                                }}
+                              />
+                            </div>
+                            <div className="inputGp">
+                              <label> Quest Origin: </label>
+                              <br />
+                              <textarea 
+                                placeholder={quest.questOrigin}
+                                onChange={(event) => {
+                                  setQuestOrigin(event.target.value);
+                                }}
+                              />
+                            </div>
+                            <div className='datePicker'>
+                              <label>Quest Deadline</label>
+                              <br/>
+                              <input
+                                placeholder={quest.selectedDate}
+                                disabled
+                              />
+                              
+                            </div>
+                            
+                            <div className='inputGp'>
+                              {missionValues.map((element, index) => (
+                                <div className='form-inline' key={index}>
+                                  <label>Mission</label>
+                                  <br />
+                                  <input type='text' name='mission' value={element.mission} onChange={(e) => handleChange(e, index)} />
+                                  {
+                                    index ?
+                                    <button type='button' className='button remove' onClick={() => removeFormFields(index)}>Remove</button>
+                                    : null 
+                                  }
+                                </div>
+                              ))}
+                              <br/>
+                              <div className="button-section">
+                                <button className="button add" type="button" onClick={() => addFormFields()}>Add Mission</button>
+                              </div>
+                            </div>
+                            <Button onClick={updateQuest}>Update</Button>
+                          </Typography>
+                          
+                        </Box>
+                      </Modal></>
+                    )}
+                    
+                  </div>
+                </div>
+              
             </div>
           );
         })} 

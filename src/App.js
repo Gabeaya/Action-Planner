@@ -6,10 +6,7 @@ import Authentication from './components/Authentication';
 import Logout from './components/Logout';
 import React, { useState } from "react";
 
-// import {signOut} from 'firebase/auth';
-// import {auth} from './firebase';
-
-
+import './components/App.css';
 
 function App() {
   const [missionValues, setMissionValues] = useState([{ mission:""}]);
@@ -17,7 +14,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (  
-    <>
+    <div className='app'>
       <Router>
         <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
         <Routes>
@@ -27,7 +24,10 @@ function App() {
           <Route path="/logout" element={<Logout setIsAuth={setIsAuth}/>}/>
         </Routes>
       </Router>
-    </>
+    </div>
+      
+
+      
     
 
       

@@ -21,6 +21,7 @@ function Navbar({isAuth, setIsAuth}) {
     <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>
         <LeftContainer>
+          
           <NavbarLinkContainer>
             <NavbarLink to="/"> Home</NavbarLink>
             {!isAuth ? (

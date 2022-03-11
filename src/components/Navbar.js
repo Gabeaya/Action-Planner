@@ -16,13 +16,6 @@ import {
 import logo from '../assets/wolf.png';
 
 function Navbar({isAuth, setIsAuth}) {
-  // const signUserOut = () => {
-  //   signOut(auth).then(() => {
-  //     localStorage.clear()
-  //     setIsAuth(false)
-  //     window.location.pathname = "/authentication";
-  //   })
-  // };
   const [extendNavbar, setExtendNavbar] = useState(false);
   return (
     <NavbarContainer extendNavbar={extendNavbar}>

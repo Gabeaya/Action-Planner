@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
+
 
 
 function Home({isAuth, missionValues, setMissionValues}) {
@@ -99,12 +99,14 @@ function Home({isAuth, missionValues, setMissionValues}) {
                 </div>
               </div>
               <div className='questTextContainer'>
-                  <h2>Whats the story: {quest.questOrigin}</h2>
-                  <p>Deadline: {quest.selectedDate}</p>
-                  <h3>@{quest.author.name}</h3>
+                <h2>Whats the story: {quest.questOrigin}</h2>
+                <p>Deadline: {quest.selectedDate}</p>
+              </div>
+
+              
                   <div className='postDetails'>
                     {isAuth && quest.author.id === auth.currentUser.uid && (
-                      <><Button onClick={handleOpen}>Details...</Button><Modal
+                      <> <Button onClick={handleOpen}>Details...</Button><Modal
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="modal-modal-title"
@@ -168,7 +170,6 @@ function Home({isAuth, missionValues, setMissionValues}) {
                     )}
                     
                   </div>
-                </div>
               
             </div>
           );

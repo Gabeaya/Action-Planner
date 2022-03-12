@@ -51,8 +51,8 @@ function CreateQuest({ missionValues, setMissionValues}) {
   return (
       <main>
         <form>
-            <div className='createPostPage'>
-              <div className='cpContainer'>
+            <div className='homepage'>
+              <div className='box'>
                 <h1> Begin a Quest </h1>
                 <div className='inputGp'> 
                   <label> Quest Name:</label>

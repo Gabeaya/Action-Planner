@@ -52,7 +52,7 @@ function Home({isAuth, missionValues, setMissionValues}) {
       setQuestLists(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     }
 
-    getQuests();
+    // getQuests();
     
   },[])
 

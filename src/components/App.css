@@ -28,7 +28,7 @@
   width: 60vh;
   height: auto;
   max-height: 600px;
-  box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 8px 10px;
   margin: 20px;
   padding: 20px;
 
@@ -36,8 +36,8 @@
   -webkit-backdrop-filter: blur(4px) saturate(156%);
   background-color: rgba(255, 255, 255, 0);
   border-radius: 12px;
-  border-top: 2px solid rgba(255, 255, 255, 0.667);
-  border-right: 2px solid rgba(255, 255, 255, 0.667);
+  border-top: 1px solid rgba(255, 255, 255, 0.667);
+  border-right: 1px solid rgba(255, 255, 255, 0.667);
 
 }
 .quest .header {
@@ -167,6 +167,6 @@ footer{
   columns: black;
   display: grid;
   place-content: center;
-  position:relative;
+  position:absolute;
 }
 

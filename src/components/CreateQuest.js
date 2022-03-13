@@ -51,13 +51,14 @@ function CreateQuest({ missionValues, setMissionValues}) {
   return (
       <main>
         <form>
-            <div className='homepage'>
+            <div className='layout'>
               <div className='box'>
                 <h1> Begin a Quest </h1>
                 <div className='inputGp'> 
                   <label> Quest Name:</label>
                   <br/>
                   <input 
+                    className="input"
                     placeholder='Title...' 
                     required
                     onChange={(event) => {
@@ -70,7 +71,8 @@ function CreateQuest({ missionValues, setMissionValues}) {
                   <label> Quest Origin: </label>
                   <br />
                   <textarea 
-                    placeholder='Where does your quest begin...'
+                    className="input"
+                    placeholder="What's being put into action"
                     required
                     onChange={(event) => {
                       setQuestOrigin(event.target.value);
@@ -81,6 +83,7 @@ function CreateQuest({ missionValues, setMissionValues}) {
                   <label>Quest Deadline</label>
                   <br/>
                   <input
+                    className="input"
                     type="date"
                     required
                     onChange={(event) => {
@@ -95,19 +98,23 @@ function CreateQuest({ missionValues, setMissionValues}) {
                     <div className='form-inline' key={index}>
                       <label>Mission</label>
                       <br />
-                      <input type='text' name='mission' value={element.mission} onChange={(e) => handleChange(e, index)} />
+                      <input 
+                      className="input"
+                      placeholder='What is your first step?'
+                      type='text' 
+                      name='mission' 
+                      value={element.mission} 
+                      onChange={(e) => handleChange(e, index)} />
                       {
                         index ?
-                        <button type='button' className='button remove' onClick={() => removeFormFields(index)}>Remove</button>
+                        <button type='button' className='buttonicon' onClick={() => removeFormFields(index)}>-</button>
                         : null 
                       }
+                      <button className="buttonicon" type="button" onClick={() => addFormFields()}>+</button>
                     </div>
                   ))}
                   <br/>
                   <div className="button-section">
-                    <button className="button add" type="button" onClick={() => addFormFields()}>Add Mission</button>
-
-                    <br/>
                     <button onClick={createQuest} className="button submit" type="submit">Begin Quest!</button>
                   </div>
                 </div>

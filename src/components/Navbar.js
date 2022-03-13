@@ -13,7 +13,7 @@ import {
   OpenLinksButton,
   NavbarLinkExtended,
 } from "../styles/Navbar.styles";
-import logo from '../assets/wolf.png';
+import logo from '../assets/logo.png';
 
 function Navbar({isAuth, setIsAuth}) {
   const [extendNavbar, setExtendNavbar] = useState(false);

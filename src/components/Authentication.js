@@ -15,7 +15,7 @@ function Authentication({setIsAuth}) {
 
   return (
     <>
-      <div className='landingPage'>
+      <div className='layout'>
         <div className='container2'>
           <div className='front side'>
             <div className="content"> 
@@ -35,7 +35,7 @@ function Authentication({setIsAuth}) {
                 <li>Complete your goals to gain XP</li>
               </ul>
               <p>Get Started by Signing with Google</p>
-              <button className='login-with-google-btn' onClick={signInWithGoogle}>Sign In</button>
+              <button className='buttonicon' onClick={signInWithGoogle}>Sign In</button>
             </div>
           </div> 
         </div>

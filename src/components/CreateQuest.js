@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import {addDoc, collection} from "firebase/firestore";
 import { db, auth } from '../firebase';
 import { useNavigate} from "react-router-dom";
-
+import Footer from './Footer';
 
 function CreateQuest({ missionValues, setMissionValues}) {
   const [questTitle, setQuestTitle] = useState("");
@@ -59,9 +59,11 @@ function CreateQuest({ missionValues, setMissionValues}) {
                   <br/>
                   <input 
                     placeholder='Title...' 
+                    required
                     onChange={(event) => {
                       setQuestTitle(event.target.value);
                     }}
+
                   />
                 </div>
                 <div className="inputGp">
@@ -69,6 +71,7 @@ function CreateQuest({ missionValues, setMissionValues}) {
                   <br />
                   <textarea 
                     placeholder='Where does your quest begin...'
+                    required
                     onChange={(event) => {
                       setQuestOrigin(event.target.value);
                     }}
@@ -76,8 +79,10 @@ function CreateQuest({ missionValues, setMissionValues}) {
                 </div>
                 <div className='datePicker'>
                   <label>Quest Deadline</label>
+                  <br/>
                   <input
                     type="date"
+                    required
                     onChange={(event) => {
                       setSelectedDate(event.target.value)
                     }}
@@ -109,6 +114,7 @@ function CreateQuest({ missionValues, setMissionValues}) {
               </div>
             </div>        
         </form>
+        <Footer />
       </main>
     
     

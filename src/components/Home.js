@@ -22,11 +22,6 @@ function Home({isAuth, missionValues, setMissionValues}) {
   const addFormFields = () => {
     setMissionValues([...missionValues, {mission: ""}])
   }
-  const removeFormFields = (i) => {
-    const newMissionValues = [...missionValues];
-    newMissionValues.splice(i, 1);
-    setMissionValues(newMissionValues)
-  }
 
   const handleChange = (e, index) => {
     const {name, value} = e.target
@@ -77,15 +72,12 @@ function Home({isAuth, missionValues, setMissionValues}) {
   console.log()
 
   return (
-      <div className="homepage">
+      <div className="layout">
         {questLists.map((quest) => {
           return (
             <div className="quest"> 
               <div className="header"> 
-                <div className='title'> 
-                  <h1>"{quest.questTitle}"</h1>
-                </div>
-                <div className='deletePost'>
+              <div className='deletePost'>
                   {isAuth && quest.author.id === auth.currentUser.uid && (
                     <button 
                       onClick={() => {
@@ -93,10 +85,14 @@ function Home({isAuth, missionValues, setMissionValues}) {
                         display();
                       }}
                     >
-                      X
+                    X
                     </button>
                   )}
                 </div>
+                <div className='title'> 
+                  <h1>{quest.questTitle}</h1>
+                </div>
+                
               </div>
               <div className='questTextContainer'>
                 <h2>Whats the story: {quest.questOrigin}</h2>
@@ -106,7 +102,8 @@ function Home({isAuth, missionValues, setMissionValues}) {
               
                   <div className='postDetails'>
                     {isAuth && quest.author.id === auth.currentUser.uid && (
-                      <> <Button onClick={handleOpen}>Details...</Button><Modal
+                      <> <Button classname="details" onClick={handleOpen}>Details...</Button><Modal
+
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="modal-modal-title"
@@ -118,6 +115,7 @@ function Home({isAuth, missionValues, setMissionValues}) {
                               <label> Quest Name:</label>
                               <br/>
                               <input 
+                                className="input"
                                 placeholder={quest.questTitle} 
                                 onChange={(event) => {
                                   setQuestTitle(event.target.value);
@@ -128,6 +126,7 @@ function Home({isAuth, missionValues, setMissionValues}) {
                               <label> Quest Origin: </label>
                               <br />
                               <textarea 
+                                className="input"
                                 placeholder={quest.questOrigin}
                                 onChange={(event) => {
                                   setQuestOrigin(event.target.value);
@@ -138,6 +137,7 @@ function Home({isAuth, missionValues, setMissionValues}) {
                               <label>Quest Deadline</label>
                               <br/>
                               <input
+                                className="input"
                                 placeholder={quest.selectedDate}
                                 disabled
                               />
@@ -149,17 +149,15 @@ function Home({isAuth, missionValues, setMissionValues}) {
                                 <div className='form-inline' key={index}>
                                   <label>Mission</label>
                                   <br />
-                                  <input type='text' name='mission' value={element.mission} onChange={(e) => handleChange(e, index)} />
-                                  {
-                                    index ?
-                                    <button type='button' className='button remove' onClick={() => removeFormFields(index)}>Remove</button>
-                                    : null 
-                                  }
+                                  <textarea
+                                    className="input"
+                                    type='text' name='mission' value={element.mission} onChange={(e) => handleChange(e, index)} />
+                                  
                                 </div>
                               ))}
                               <br/>
                               <div className="button-section">
-                                <button className="button add" type="button" onClick={() => addFormFields()}>Add Mission</button>
+                                <button className="buttonicon" type="button" onClick={() => addFormFields()}>Add Mission</button>
                               </div>
                             </div>
                             <Button onClick={updateQuest}>Update</Button>

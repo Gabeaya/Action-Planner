@@ -24,9 +24,9 @@
 }
 
 .app{
-  background-image: url("../assets/cover.jpg");
+  /* background-image: url("../assets/cover.jpg");
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   width: 100%;
   height: 100%;
 
@@ -43,7 +43,7 @@
 
 }
 /* Home styles */
-.homepage{
+.layout{
   width: 100%;
   min-height: calc(100vh - 80px);
   height: auto;
@@ -51,8 +51,11 @@
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
+  background-image: url("../assets/cover.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
-.homepage .quest{
+.layout .quest{
 
   width: 60vh;
   height: auto;
@@ -60,7 +63,7 @@
   box-shadow: rgba(0, 0, 0, 0.8) 0px 8px 10px;
   margin: 20px;
   padding: 20px;
-
+  color:White;
   backdrop-filter: blur(4px) saturate(156%);
   -webkit-backdrop-filter: blur(4px) saturate(156%);
   background-color: rgba(255, 255, 255, 0);
@@ -70,9 +73,27 @@
 
 }
 .quest .header {
-  display: flex;
+  text-align: center;
   justify-content: center;
   width:100%;
+
+}
+
+.input{
+    border: none;
+    border-radius: 20px;
+    padding: 5px 8px;
+    color: #333;
+    box-shadow: 
+        inset 0 2px 0 rgba(0,0,0,.2), 
+        0 0 4px rgba(0,0,0,0.1);
+}
+.input:focus {
+  outline: none;
+  box-shadow: 
+      inset 0 2px 0 rgba(0,0,0,.2), 
+      0 0 4px rgba(0,0,0,0.1), 
+      0 0 5px 1px #51CBEE;
 }
 /* Sets the title to the left 50% and the trash can to the right */
 .header .title{
@@ -92,6 +113,7 @@
   background: none;
   font-size: 30px;
   cursor: pointer;
+  color: white;
 }
 
 .quest .questTextContainer {
@@ -101,6 +123,9 @@
   width: 100%;
   overflow: hidden;
   overflow-y: auto;
+  border-style:inset;
+  text-align: center;
+
 }
 
 /* word-wrap: break-word;
@@ -116,7 +141,8 @@
   border: 2px solid rgb(255, 255, 255);
   padding: 10px;
   color: black;
-  width: 250px;
+  text-shadow:4px 2px 1px rgba(0, 255, 234, 0.199);
+  width: 300px;
   backdrop-filter: blur(4px) saturate(156%);
   -webkit-backdrop-filter: blur(4px) saturate(156%);
   background-color: rgba(255, 255, 255, 0);
@@ -125,6 +151,69 @@
 
 }
 
+
+.button{
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 100px;
+}
+
+.button:hover {
+  background-color: #f7fafa;
+}
+
+.button:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+} 
+.buttonicon{
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 25px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+.buttonicon:hover {
+  background-color: #f7fafa;
+}
+
+.buttonicon:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+} 
 .form{
   width: 350px;
   height: 500px;
@@ -152,41 +241,7 @@
   filter: blur(10px);
 }
 
-/* GOOGLE BUTTOn */
-.login-with-google-btn {
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  padding: 5px 16px 12px 42px;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
-  color: #757575;
-  font-size: 25px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
-  background-color: white;
-  background-repeat: no-repeat;
-  background-position: 12px 11px;
-}
-.login-with-google-btn:hover {
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
-}
-.login-with-google-btn:active {
-  background-color: #eeeeee;
-}
-.login-with-google-btn:focus {
-  outline: none;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
-    0 0 0 3px #c8dafc;
-}
-.login-with-google-btn:disabled {
-  filter: grayscale(100%);
-  background-color: #ebebeb;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
-  cursor: not-allowed;
-}
+
 
 footer{
   width: 100%;
@@ -198,14 +253,14 @@ footer{
   place-content: center;
   position:fixed;
 }
-  .container2{
+.container2{
     position: absolute;
     top: 30%;
     width: 700px;
     height: 300px;
     border-radius: 20px;
-    -webkit-transition: 1.5s ease-in-out;
-    transition: 1.5s ease-in-out;
+    -webkit-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
     transform-style: preserve-3d;
   }
   /* box-shadow: rgba(0, 0, 0, 0.8) 0px 8px 10px;
@@ -235,7 +290,9 @@ footer{
   .content h1 {
     font-family: "Final";
     letter-spacing: .1em;
+    font-size: 50px;
     text-align: center;
+    text-shadow: 2px 3px rgb(0, 136, 255);
   }
   
   .front {
@@ -252,9 +309,9 @@ footer{
   .back {
     text-align: center;
     list-style-position: inside;
+
     transform: rotateY(180deg);
     z-index: 0;
-    /* background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg); */
     background-size: cover;
     background-color: rgba(255, 255, 255, 0);
     border-top: 1px solid rgba(255, 255, 255, 0.667);

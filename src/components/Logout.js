@@ -10,9 +10,12 @@ function Logout({setIsAuth}) {
     })
   };
   return (
-    <div>
+    <div className='layout'>
+      <div className='box'>
       <h1>LogOut</h1>
-      <button onClick={signUserOut}> Log Out</button>
+      <button className="buttonicon" onClick={signUserOut}> Log Out</button>
+      </div>
+      
     
     </div>
   )

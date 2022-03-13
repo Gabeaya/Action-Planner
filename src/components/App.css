@@ -26,9 +26,10 @@
 .app{
   background-image: url("../assets/cover.jpg");
   background-size: cover;
+  background-attachment: fixed;
   width: 100%;
   height: 100%;
-  position: absolute;
+
 }
 .container {
   width: 100%;
@@ -50,7 +51,6 @@
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-  padding-bottom: 30px;
 }
 .homepage .quest{
 
@@ -198,84 +198,79 @@ footer{
   place-content: center;
   position:fixed;
 }
-
-/* Landing Page style */
-
-/* .landingPage{
-  padding: 15%;
-  position: absolute;
-  font-size: 200%;
-  
-} */
-
-/* .landingPage h1{
-  font-family: "Battle";
-    letter-spacing: .1em;
-    text-shadow: 
-      0 -1px 0 #fff, 
-      0 1px 0 #2e2e2e, 
-      0 2px 0 #2c2c2c, 
-      0 3px 0 #2a2a2a, 
-      0 4px 0 #282828, 
-      0 5px 0 #262626, 
-      0 6px 0 #242424, 
-      0 7px 0 #222, 
-      0 8px 0 #202020, 
-      0 9px 0 #1e1e1e, 
-      0 10px 0 #1c1c1c, 
-      0 11px 0 #1a1a1a, 
-      0 12px 0 #181818, 
-      0 13px 0 #161616, 
-      0 14px 0 #141414, 
-      0 15px 0 #121212, 
-      0 22px 30px rgba(0, 0, 0, 0.9);
-      text-align: center;
-  } */
   .container2{
-    position: relative;
+    position: absolute;
+    top: 30%;
     width: 700px;
-    height: 200px;
+    height: 300px;
     border-radius: 20px;
     -webkit-transition: 1.5s ease-in-out;
     transition: 1.5s ease-in-out;
     transform-style: preserve-3d;
-
   }
-  
+  /* box-shadow: rgba(0, 0, 0, 0.8) 0px 8px 10px;
+  margin: 20px;
+  padding: 20px;
+
+  backdrop-filter: blur(4px) saturate(156%);
+  -webkit-backdrop-filter: blur(4px) saturate(156%);
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.667);
+  border-right: 1px solid rgba(255, 255, 255, 0.667); */
   .side {
     position: absolute;
-    text-align: center;
     width: 80%;
     height: 100%;
-    left:60%;
-    color: #fff;
     transform-style: preserve-3d;
     backface-visibility: hidden;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 8px 10px;
+
   }
   /* responsible for how far text within the contet protrudes */
   .content {
     transform: translatez(50px) scale(.9);
-
   }
-
+  .content h1 {
+    font-family: "Final";
+    letter-spacing: .1em;
+    text-align: center;
+  }
   
   .front {
     padding-top: 10%;
     z-index: 2;
+    color: white;
     background-size: cover;
-    background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg);
+    background-color: rgba(255, 255, 255, 0);
+    border-top: 1px solid rgba(255, 255, 255, 0.667);
+    border-right: 1px solid rgba(255, 255, 255, 0.667);
+    backdrop-filter: blur(4px) saturate(156%);
+    -webkit-backdrop-filter: blur(4px) saturate(156%);
   }
-
   .back {
+    text-align: center;
+    list-style-position: inside;
     transform: rotateY(180deg);
     z-index: 0;
-    padding-top: 10px;
-    background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg);
+    /* background-image: url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg); */
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0);
+    border-top: 1px solid rgba(255, 255, 255, 0.667);
+    border-right: 1px solid rgba(255, 255, 255, 0.667);
+    backdrop-filter: blur(4px) saturate(156%);
+    -webkit-backdrop-filter: blur(4px) saturate(156%);
   }
   .container2:hover {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+  }
+
+  .loginPage{
+    position: absolute;
+    left: 65%;
+    top: 40%;
   }
 
   

@@ -1,3 +1,5 @@
+The research logger was on a different readme:
+https://github.com/Gabeaya/Capstone.git 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
